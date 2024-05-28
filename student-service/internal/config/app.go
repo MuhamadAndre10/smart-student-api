@@ -29,7 +29,7 @@ func Bootstrap(config *BootstrapConfig) {
 	// handler
 	studentHandler := http.NewStudentHandler(config.Log, studentUseCase)
 
-	r := route.RouteConfig{
+	r := route.Config{
 		App:            config.App,
 		StudentHandler: studentHandler,
 	}
