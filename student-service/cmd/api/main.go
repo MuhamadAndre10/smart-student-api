@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/MuhamadAndre10/student-profile-service/internal/config"
 	"github.com/gofiber/fiber/v2"
-	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"os"
 	"os/signal"
@@ -12,27 +11,26 @@ import (
 )
 
 func main() {
-	cfg := config.NewViper()
-	app := config.NewFiber(cfg)
+	config.InitEnvConfigs(".")
+	app := config.NewFiber()
 	log := config.NewLogger()
-	db := config.NewDatabase(cfg)
+	db := config.NewDatabase()
 	validate := config.NewValidate()
 
 	config.Bootstrap(&config.BootstrapConfig{
 		Log:      log,
 		DB:       db,
-		Config:   cfg,
 		Validate: validate,
 		App:      app,
 	})
 
-	serve(app, cfg, log)
+	serve(app, log)
 }
 
-func serve(app *fiber.App, cfg *viper.Viper, log *zap.Logger) {
+func serve(app *fiber.App, log *zap.Logger) {
 
 	go func() {
-		err := app.Listen(fmt.Sprintf(":%s", cfg.GetString("APP_PORT")))
+		err := app.Listen(fmt.Sprintf(":%s", config.Env.AppPort))
 		if err != nil {
 			log.Panic("Error when listen", zap.Error(err))
 		}

@@ -3,7 +3,6 @@ package config
 import (
 	"fmt"
 	"github.com/MuhamadAndre10/student-profile-service/internal/entity"
-	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -12,7 +11,7 @@ import (
 	"time"
 )
 
-func NewDatabase(v *viper.Viper) *gorm.DB {
+func NewDatabase() *gorm.DB {
 	logFile := "log/db.log"
 	file, _ := os.OpenFile(logFile, os.O_WRONLY|os.O_CREATE, 0222)
 	defer file.Close()
@@ -25,7 +24,9 @@ func NewDatabase(v *viper.Viper) *gorm.DB {
 	}
 
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable TimeZone=Asia/Shanghai",
-		v.GetString("PG_HOST"), v.GetString("PG_USERNAME"), v.GetString("PG_PASSWORD"), v.GetString("PG_DATABASE"), v.GetInt("PG_PORT"))
+		Env.PGHost, Env.PGUser, Env.PGPassword, Env.PGDatabase, Env.PGPort)
+
+	// update dsn make it a Env. variable
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		Logger: logger.New(&logWriter{Logger: log}, logger.Config{
@@ -50,9 +51,9 @@ func NewDatabase(v *viper.Viper) *gorm.DB {
 		log.Fatal("failed to connect database", zap.Error(err))
 	}
 
-	conn.SetMaxIdleConns(v.GetInt("PG_DB_POOL_IDLE"))
-	conn.SetMaxOpenConns(v.GetInt("PG_DB_POOL_MAX"))
-	conn.SetConnMaxLifetime(time.Second * time.Duration(v.GetInt("PG_DB_POOL_MAX_LIFETIME")))
+	conn.SetMaxIdleConns(Env.PGDBPoolIdle)
+	conn.SetMaxOpenConns(Env.PGDBPoolMax)
+	conn.SetConnMaxLifetime(time.Second * time.Duration(Env.PGDBPoolMaxLifetime))
 
 	return db
 }

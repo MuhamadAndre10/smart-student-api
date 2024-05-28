@@ -7,9 +7,8 @@ import (
 )
 
 func TestNewViper(t *testing.T) {
-	viper := config.NewViper()
+	config.InitEnvConfigs(".")
 
-	assert.NotNil(t, viper)
-	assert.Equal(t, "student-service", viper.GetString("APP_NAME"))
+	assert.Equal(t, "student-service", config.Env.AppName)
 
 }

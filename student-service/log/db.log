@@ -168,3 +168,54 @@
 [5.365ms] [rows:0] CREATE TABLE "parents" ("id" text,"full_name" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"status" varchar(10) NOT NULL,"employment" varchar(50),"address" varchar(100),"student_id" text NOT NULL,"HealthyID" text NOT NULL,"created_at" timestamptz,"updated_at" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "fk_parents_healthy" FOREIGN KEY ("HealthyID") REFERENCES "healthies"("id"),CONSTRAINT "fk_students_parents" FOREIGN KEY ("student_id") REFERENCES "students"("id"),CONSTRAINT "uni_parents_id" UNIQUE ("id"))
 
 2024-05-28T17:48:24.346+0700	INFO	config/gorm.go:46	Connecting to database	{"status": "success"}
+2024-05-28T18:03:43.810+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/repository/repository.go:10
+[10.614ms] [rows:1] INSERT INTO "students" ("id","student_id","full_name","email","no_phone","gender","religion","birth_date","photo","class_id","created_at","updated_at") VALUES ($1$,$2$,$3$,$4$,$5$,$6$,$7$,$8$,$9$,$10$,$11$,$12$)
+
+2024-05-28T19:00:54.129+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:31
+[error] failed to initialize database, got error cannot parse `host= user= password=xxxxx dbname= port=0 sslmode=disable TimeZone=Asia/Shanghai`: invalid port (outside range)
+
+2024-05-28T19:00:54.130+0700	FATAL	config/gorm.go:42	failed to connect database	{"error": "cannot parse `host= user= password=xxxxx dbname= port=0 sslmode=disable TimeZone=Asia/Shanghai`: invalid port (outside range)"}
+github.com/MuhamadAndre10/student-profile-service/internal/config.NewDatabase
+	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:42
+main.main
+	D:/A. Development/golang project/smart student microservices api/student-service/cmd/api/main.go:17
+runtime.main
+	C:/Program Files/Go/src/runtime/proc.go:271
+2024-05-28T19:01:04.687+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:31
+[error] failed to initialize database, got error cannot parse `host= user= password=xxxxx dbname= port=0 sslmode=disable TimeZone=Asia/Shanghai`: invalid port (outside range)
+
+2024-05-28T19:01:04.688+0700	FATAL	config/gorm.go:42	failed to connect database	{"error": "cannot parse `host= user= password=xxxxx dbname= port=0 sslmode=disable TimeZone=Asia/Shanghai`: invalid port (outside range)"}
+github.com/MuhamadAndre10/student-profile-service/internal/config.NewDatabase
+	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:42
+main.main
+	D:/A. Development/golang project/smart student microservices api/student-service/cmd/api/main.go:17
+runtime.main
+	C:/Program Files/Go/src/runtime/proc.go:271
+2024-05-28T19:02:12.771+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:62
+[32.303ms] [rows:0] DROP TABLE IF EXISTS "healthies" CASCADE
+
+2024-05-28T19:02:12.775+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:62
+[2.773ms] [rows:0] DROP TABLE IF EXISTS "parents" CASCADE
+
+2024-05-28T19:02:12.781+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:62
+[3.440ms] [rows:0] DROP TABLE IF EXISTS "students" CASCADE
+
+2024-05-28T19:02:12.812+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:64
+[30.836ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'students' AND table_type = 'BASE TABLE'
+
+2024-05-28T19:02:12.832+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:64
+[17.820ms] [rows:0] CREATE TABLE "students" ("id" text,"student_id" text NOT NULL,"full_name" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"gender" gender_type NOT NULL,"religion" varchar(10) NOT NULL,"birth_date" text,"photo" varchar(255),"class_id" text NOT NULL,"created_at" timestamptz,"updated_at" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "uni_students_id" UNIQUE ("id"),CONSTRAINT "uni_students_student_id" UNIQUE ("student_id"),CONSTRAINT "uni_students_class_id" UNIQUE ("class_id"))
+
+2024-05-28T19:02:12.832+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:64
+[0.560ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'healthies' AND table_type = 'BASE TABLE'
+
+2024-05-28T19:02:12.838+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:64
+[5.199ms] [rows:0] CREATE TABLE "healthies" ("id" text,"bloodType" varchar(5),"allergy" varchar(100),"height" bigint,"weight" bigint,"emergencyContactName" varchar(100),"emergencyContactPhone" varchar(15),"createdAt" timestamptz,"updatedAt" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "uni_healthies_id" UNIQUE ("id"))
+
+2024-05-28T19:02:12.838+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:64
+[0.568ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parents' AND table_type = 'BASE TABLE'
+
+2024-05-28T19:02:12.846+0700	INFO	config/gorm.go:77	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:64
+[7.578ms] [rows:0] CREATE TABLE "parents" ("id" text,"full_name" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"status" varchar(10) NOT NULL,"employment" varchar(50),"address" varchar(100),"student_id" text NOT NULL,"HealthyID" text NOT NULL,"created_at" timestamptz,"updated_at" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "fk_students_parents" FOREIGN KEY ("student_id") REFERENCES "students"("id"),CONSTRAINT "fk_parents_healthy" FOREIGN KEY ("HealthyID") REFERENCES "healthies"("id"),CONSTRAINT "uni_parents_id" UNIQUE ("id"))
+
+2024-05-28T19:02:12.846+0700	INFO	config/gorm.go:47	Connecting to database	{"status": "success"}

@@ -7,7 +7,6 @@ import (
 	"github.com/MuhamadAndre10/student-profile-service/internal/usecase"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
@@ -16,7 +15,6 @@ type BootstrapConfig struct {
 	App      *fiber.App
 	Log      *zap.Logger
 	DB       *gorm.DB
-	Config   *viper.Viper
 	Validate *validator.Validate
 }
 
