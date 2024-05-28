@@ -10,7 +10,7 @@ func NewViper() *viper.Viper {
 
 	config.SetConfigName(".env")
 	config.SetConfigType("env")
-	config.AddConfigPath("./../")
+	config.AddConfigPath("./../../")
 	config.AddConfigPath(".")
 	err := config.ReadInConfig()
 

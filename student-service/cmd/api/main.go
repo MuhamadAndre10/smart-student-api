@@ -15,7 +15,16 @@ func main() {
 	cfg := config.NewViper()
 	app := config.NewFiber(cfg)
 	log := config.NewLogger()
-	db := config.NewDatabase(cfg, log)
+	db := config.NewDatabase(cfg)
+	validate := config.NewValidate()
+
+	config.Bootstrap(&config.BootstrapConfig{
+		Log:      log,
+		DB:       db,
+		Config:   cfg,
+		Validate: validate,
+		App:      app,
+	})
 
 	serve(app, cfg, log)
 }
@@ -23,7 +32,7 @@ func main() {
 func serve(app *fiber.App, cfg *viper.Viper, log *zap.Logger) {
 
 	go func() {
-		err := app.Listen(fmt.Sprintf(":%s", cfg.GetString("PORT")))
+		err := app.Listen(fmt.Sprintf(":%s", cfg.GetString("APP_PORT")))
 		if err != nil {
 			log.Panic("Error when listen", zap.Error(err))
 		}

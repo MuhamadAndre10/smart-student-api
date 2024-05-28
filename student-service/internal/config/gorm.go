@@ -8,20 +8,24 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"os"
 	"time"
 )
 
-func NewDatabase(viper *viper.Viper, log *zap.Logger) *gorm.DB {
-	username := viper.GetString("PG_USERNAME")
-	password := viper.GetString("PG_PASSWORD")
-	host := viper.GetString("PG_HOST")
-	port := viper.GetInt("PG_PORT")
-	database := viper.GetString("PG_DATABASE")
-	idleConnection := viper.GetInt("PG_DB_POOL_IDLE")
-	maxConnection := viper.GetInt("PG_DB_POOL_MAX")
-	maxLifeTimeConnection := viper.GetInt("PG_DB_POOL_MAX_LIFETIME")
+func NewDatabase(v *viper.Viper) *gorm.DB {
+	logFile := "log/db.log"
+	file, _ := os.OpenFile(logFile, os.O_WRONLY|os.O_CREATE, 0222)
+	defer file.Close()
 
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable TimeZone=Asia/Shanghai", host, username, password, database, port)
+	config := zap.NewDevelopmentConfig()
+	config.OutputPaths = []string{logFile}
+	log, err := config.Build()
+	if err != nil {
+		panic(fmt.Errorf("Fatal error zap logger: %w \n", err))
+	}
+
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable TimeZone=Asia/Shanghai",
+		v.GetString("PG_HOST"), v.GetString("PG_USERNAME"), v.GetString("PG_PASSWORD"), v.GetString("PG_DATABASE"), v.GetInt("PG_PORT"))
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		Logger: logger.New(&logWriter{Logger: log}, logger.Config{
@@ -37,29 +41,25 @@ func NewDatabase(viper *viper.Viper, log *zap.Logger) *gorm.DB {
 		log.Fatal("failed to connect database", zap.Error(err))
 	}
 
+	migrate(db)
+
 	log.Info("Connecting to database", zap.String("status", "success"))
 
-	err = migrate(db)
-	if err != nil {
-		log.Fatal("failed to migrate", zap.Error(err))
-
-	}
-
-	log.Info("Migrating database", zap.String("status", "success"))
-
-	connection, err := db.DB()
+	conn, err := db.DB()
 	if err != nil {
 		log.Fatal("failed to connect database", zap.Error(err))
 	}
 
-	connection.SetMaxIdleConns(idleConnection)
-	connection.SetMaxOpenConns(maxConnection)
-	connection.SetConnMaxLifetime(time.Second * time.Duration(maxLifeTimeConnection))
+	conn.SetMaxIdleConns(v.GetInt("PG_DB_POOL_IDLE"))
+	conn.SetMaxOpenConns(v.GetInt("PG_DB_POOL_MAX"))
+	conn.SetConnMaxLifetime(time.Second * time.Duration(v.GetInt("PG_DB_POOL_MAX_LIFETIME")))
 
 	return db
 }
 
 func migrate(db *gorm.DB) error {
+	_ = db.Migrator().DropTable(&entity.Students{}, &entity.Parents{}, &entity.Healthy{})
+
 	err := db.AutoMigrate(&entity.Students{}, &entity.Parents{}, &entity.Healthy{})
 	if err != nil {
 		return err

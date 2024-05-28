@@ -1,6 +1,7 @@
 package config
 
 import (
+	"errors"
 	"github.com/gofiber/fiber/v2"
 	"github.com/spf13/viper"
 )
@@ -15,7 +16,8 @@ func NewFiber(viper *viper.Viper) *fiber.App {
 func NewErrorHandler() fiber.ErrorHandler {
 	return func(ctx *fiber.Ctx, err error) error {
 		code := fiber.StatusInternalServerError
-		if e, ok := err.(*fiber.Error); ok {
+		var e *fiber.Error
+		if errors.As(err, &e) {
 			code = e.Code
 		}
 

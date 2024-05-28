@@ -1,0 +1,170 @@
+2024-05-28T12:50:12.498+0700	INFO	config/gorm.go:44	Connecting to database	{"status": "success"}
+2024-05-28T12:51:59.378+0700	INFO	config/gorm.go:72	D:/A. Development/golang project/smart student microservices api/student-service/internal/repository/repository.go:10 ERROR: column "students_id" of relation "students" does not exist (SQLSTATE 42703)
+[4.233ms] [rows:0] INSERT INTO "students" ("id","students_id","full_name","email","no_phone","gender","religion","birthDate","noPhone","photo","classID","createdAt","updatedAt") VALUES ($1$,$2$,$3$,$4$,$5$,$6$,$7$,$8$,$9$,$10$,$11$,$12$,$13$)
+
+2024-05-28T12:58:18.095+0700	INFO	config/gorm.go:44	Connecting to database	{"status": "success"}
+2024-05-28T12:58:22.293+0700	INFO	config/gorm.go:72	D:/A. Development/golang project/smart student microservices api/student-service/internal/repository/repository.go:10 ERROR: column "students_id" of relation "students" does not exist (SQLSTATE 42703)
+[1.661ms] [rows:0] INSERT INTO "students" ("id","students_id","full_name","email","no_phone","gender","religion","birthDate","noPhone","photo","classID","createdAt","updatedAt") VALUES ($1$,$2$,$3$,$4$,$5$,$6$,$7$,$8$,$9$,$10$,$11$,$12$,$13$)
+
+2024-05-28T12:59:29.559+0700	INFO	config/gorm.go:44	Connecting to database	{"status": "success"}
+2024-05-28T12:59:33.827+0700	INFO	config/gorm.go:72	D:/A. Development/golang project/smart student microservices api/student-service/internal/repository/repository.go:10 ERROR: column "students_id" of relation "students" does not exist (SQLSTATE 42703)
+[1.420ms] [rows:0] INSERT INTO "students" ("id","students_id","full_name","email","no_phone","gender","religion","birthDate","noPhone","photo","classID","createdAt","updatedAt") VALUES ($1$,$2$,$3$,$4$,$5$,$6$,$7$,$8$,$9$,$10$,$11$,$12$,$13$)
+
+2024-05-28T13:01:21.751+0700	INFO	config/gorm.go:44	Connecting to database	{"status": "success"}
+2024-05-28T13:01:25.743+0700	INFO	config/gorm.go:72	D:/A. Development/golang project/smart student microservices api/student-service/internal/repository/repository.go:10 ERROR: column "students_id" of relation "students" does not exist (SQLSTATE 42703)
+[2.021ms] [rows:0] INSERT INTO "students" ("id","students_id","full_name","email","no_phone","gender","religion","birthDate","noPhone","photo","classID","createdAt","updatedAt") VALUES ($1$,$2$,$3$,$4$,$5$,$6$,$7$,$8$,$9$,$10$,$11$,$12$,$13$)
+
+2024-05-28T13:03:05.740+0700	INFO	config/gorm.go:44	Connecting to database	{"status": "success"}
+2024-05-28T13:03:05.778+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[35.889ms] [rows:0] DROP TABLE IF EXISTS "healthies" CASCADE
+
+2024-05-28T13:03:05.782+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[4.009ms] [rows:0] DROP TABLE IF EXISTS "parents" CASCADE
+
+2024-05-28T13:03:05.789+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[7.034ms] [rows:0] DROP TABLE IF EXISTS "students" CASCADE
+
+2024-05-28T13:03:05.803+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[13.205ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'students' AND table_type = 'BASE TABLE'
+
+2024-05-28T13:03:05.827+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[23.314ms] [rows:0] CREATE TABLE "students" ("id" text,"students_id" text NOT NULL,"full_name" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"gender" gender_type NOT NULL,"religion" varchar(10) NOT NULL,"birthDate" timestamptz,"noPhone" varchar(100),"photo" varchar(255),"classID" text NOT NULL,"createdAt" timestamptz,"updatedAt" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "uni_students_id" UNIQUE ("id"),CONSTRAINT "uni_students_students_id" UNIQUE ("students_id"),CONSTRAINT "uni_students_class_id" UNIQUE ("classID"))
+
+2024-05-28T13:03:05.829+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[0.510ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'healthies' AND table_type = 'BASE TABLE'
+
+2024-05-28T13:03:05.834+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[5.202ms] [rows:0] CREATE TABLE "healthies" ("id" text,"bloodType" varchar(5),"allergy" varchar(100),"height" bigint,"weight" bigint,"emergencyContactName" varchar(100),"emergencyContactPhone" varchar(15),"createdAt" timestamptz,"updatedAt" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "uni_healthies_id" UNIQUE ("id"))
+
+2024-05-28T13:03:05.835+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[0.505ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parents' AND table_type = 'BASE TABLE'
+
+2024-05-28T13:03:05.847+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[11.000ms] [rows:0] CREATE TABLE "parents" ("id" text,"fullName" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"status" varchar(10) NOT NULL,"employment" varchar(50),"address" varchar(100),"studentID" text NOT NULL,"healthyID" text NOT NULL,"createdAt" timestamptz,"updatedAt" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "fk_parents_healthy" FOREIGN KEY ("healthyID") REFERENCES "healthies"("id"),CONSTRAINT "fk_students_parents" FOREIGN KEY ("studentID") REFERENCES "students"("id"),CONSTRAINT "uni_parents_id" UNIQUE ("id"))
+
+2024-05-28T13:04:02.065+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/repository/repository.go:10
+[4.509ms] [rows:1] INSERT INTO "students" ("id","students_id","full_name","email","no_phone","gender","religion","birthDate","noPhone","photo","classID","createdAt","updatedAt") VALUES ($1$,$2$,$3$,$4$,$5$,$6$,$7$,$8$,$9$,$10$,$11$,$12$,$13$)
+
+2024-05-28T13:24:51.214+0700	INFO	config/gorm.go:44	Connecting to database	{"status": "success"}
+2024-05-28T17:22:17.615+0700	INFO	config/gorm.go:44	Connecting to database	{"status": "success"}
+2024-05-28T17:25:33.446+0700	INFO	config/gorm.go:44	Connecting to database	{"status": "success"}
+2024-05-28T17:41:39.381+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:41:39.403+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[21.892ms] [rows:0] DROP TABLE IF EXISTS "healthies" CASCADE
+
+2024-05-28T17:41:39.406+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[2.641ms] [rows:0] DROP TABLE IF EXISTS "parents" CASCADE
+
+2024-05-28T17:41:39.408+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:41:39.408+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:41:39.409+0700	INFO	config/gorm.go:46	Connecting to database	{"status": "success"}
+2024-05-28T17:43:17.462+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:43:17.465+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[3.700ms] [rows:0] DROP TABLE IF EXISTS "healthies" CASCADE
+
+2024-05-28T17:43:17.465+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[0.000ms] [rows:0] DROP TABLE IF EXISTS "parents" CASCADE
+
+2024-05-28T17:43:17.467+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:43:17.467+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:43:17.467+0700	INFO	config/gorm.go:46	Connecting to database	{"status": "success"}
+2024-05-28T17:44:41.877+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:44:41.879+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[2.405ms] [rows:0] DROP TABLE IF EXISTS "healthies" CASCADE
+
+2024-05-28T17:44:41.879+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[0.000ms] [rows:0] DROP TABLE IF EXISTS "parents" CASCADE
+
+2024-05-28T17:44:41.880+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:44:41.880+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:44:41.881+0700	INFO	config/gorm.go:46	Connecting to database	{"status": "success"}
+2024-05-28T17:45:53.697+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:45:53.713+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[15.154ms] [rows:0] DROP TABLE IF EXISTS "healthies" CASCADE
+
+2024-05-28T17:45:53.714+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[0.578ms] [rows:0] DROP TABLE IF EXISTS "parents" CASCADE
+
+2024-05-28T17:45:53.714+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:45:53.715+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[error] failed to parse value &entity.Students{ID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, StudentsID:"", FullName:"", Email:"", Phone:"", Gender:"", Religion:"", BrithDate:"", Address:"", Photo:"", ClassID:uuid.UUID{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, Parents:[]entity.Parents(nil), CreatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC), UpdatedAt:time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)}, got error invalid field found for struct github.com/MuhamadAndre10/student-profile-service/internal/entity.Students's field Parents: define a valid foreign key for relations or implement the Valuer/Scanner interface
+
+2024-05-28T17:45:53.715+0700	INFO	config/gorm.go:46	Connecting to database	{"status": "success"}
+2024-05-28T17:46:26.925+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[5.198ms] [rows:0] DROP TABLE IF EXISTS "healthies" CASCADE
+
+2024-05-28T17:46:26.926+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[0.564ms] [rows:0] DROP TABLE IF EXISTS "parents" CASCADE
+
+2024-05-28T17:46:26.932+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[5.988ms] [rows:0] DROP TABLE IF EXISTS "students" CASCADE
+
+2024-05-28T17:46:26.946+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[13.144ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'students' AND table_type = 'BASE TABLE'
+
+2024-05-28T17:46:26.964+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[17.834ms] [rows:0] CREATE TABLE "students" ("id" text,"students_id" text NOT NULL,"full_name" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"gender" gender_type NOT NULL,"religion" varchar(10) NOT NULL,"birth_date" text,"photo" varchar(255),"class_id" text NOT NULL,"created_at" timestamptz,"updated_at" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "uni_students_id" UNIQUE ("id"),CONSTRAINT "uni_students_students_id" UNIQUE ("students_id"),CONSTRAINT "uni_students_class_id" UNIQUE ("class_id"))
+
+2024-05-28T17:46:26.966+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[0.523ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'healthies' AND table_type = 'BASE TABLE'
+
+2024-05-28T17:46:26.972+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[5.537ms] [rows:0] CREATE TABLE "healthies" ("id" text,"bloodType" varchar(5),"allergy" varchar(100),"height" bigint,"weight" bigint,"emergencyContactName" varchar(100),"emergencyContactPhone" varchar(15),"createdAt" timestamptz,"updatedAt" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "uni_healthies_id" UNIQUE ("id"))
+
+2024-05-28T17:46:26.973+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[0.384ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parents' AND table_type = 'BASE TABLE'
+
+2024-05-28T17:46:26.981+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[7.553ms] [rows:0] CREATE TABLE "parents" ("id" text,"full_name" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"status" varchar(10) NOT NULL,"employment" varchar(50),"address" varchar(100),"student_id" text NOT NULL,"HealthyID" text NOT NULL,"created_at" timestamptz,"updated_at" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "fk_parents_healthy" FOREIGN KEY ("HealthyID") REFERENCES "healthies"("id"),CONSTRAINT "fk_students_parents" FOREIGN KEY ("student_id") REFERENCES "students"("id"),CONSTRAINT "uni_parents_id" UNIQUE ("id"))
+
+2024-05-28T17:46:26.981+0700	INFO	config/gorm.go:46	Connecting to database	{"status": "success"}
+2024-05-28T17:48:24.297+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[8.101ms] [rows:0] DROP TABLE IF EXISTS "healthies" CASCADE
+
+2024-05-28T17:48:24.302+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[3.387ms] [rows:0] DROP TABLE IF EXISTS "parents" CASCADE
+
+2024-05-28T17:48:24.307+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:61
+[4.853ms] [rows:0] DROP TABLE IF EXISTS "students" CASCADE
+
+2024-05-28T17:48:24.317+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[9.427ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'students' AND table_type = 'BASE TABLE'
+
+2024-05-28T17:48:24.332+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[13.831ms] [rows:0] CREATE TABLE "students" ("id" text,"student_id" text NOT NULL,"full_name" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"gender" gender_type NOT NULL,"religion" varchar(10) NOT NULL,"birth_date" text,"photo" varchar(255),"class_id" text NOT NULL,"created_at" timestamptz,"updated_at" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "uni_students_id" UNIQUE ("id"),CONSTRAINT "uni_students_student_id" UNIQUE ("student_id"),CONSTRAINT "uni_students_class_id" UNIQUE ("class_id"))
+
+2024-05-28T17:48:24.333+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[0.519ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'healthies' AND table_type = 'BASE TABLE'
+
+2024-05-28T17:48:24.339+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[5.381ms] [rows:0] CREATE TABLE "healthies" ("id" text,"bloodType" varchar(5),"allergy" varchar(100),"height" bigint,"weight" bigint,"emergencyContactName" varchar(100),"emergencyContactPhone" varchar(15),"createdAt" timestamptz,"updatedAt" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "uni_healthies_id" UNIQUE ("id"))
+
+2024-05-28T17:48:24.340+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[0.709ms] [rows:1] SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'parents' AND table_type = 'BASE TABLE'
+
+2024-05-28T17:48:24.345+0700	INFO	config/gorm.go:76	D:/A. Development/golang project/smart student microservices api/student-service/internal/config/gorm.go:63
+[5.365ms] [rows:0] CREATE TABLE "parents" ("id" text,"full_name" varchar(100) NOT NULL,"email" varchar(50),"no_phone" varchar(15) NOT NULL,"status" varchar(10) NOT NULL,"employment" varchar(50),"address" varchar(100),"student_id" text NOT NULL,"HealthyID" text NOT NULL,"created_at" timestamptz,"updated_at" timestamptz,PRIMARY KEY ("id"),CONSTRAINT "fk_parents_healthy" FOREIGN KEY ("HealthyID") REFERENCES "healthies"("id"),CONSTRAINT "fk_students_parents" FOREIGN KEY ("student_id") REFERENCES "students"("id"),CONSTRAINT "uni_parents_id" UNIQUE ("id"))
+
+2024-05-28T17:48:24.346+0700	INFO	config/gorm.go:46	Connecting to database	{"status": "success"}
