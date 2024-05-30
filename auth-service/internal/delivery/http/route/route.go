@@ -1,14 +1,14 @@
 package route
 
 import (
-	deliver_http "github.com/MuhamadAndre/auth-service/internal/delivery/http"
+	deliverhttp "github.com/MuhamadAndre/auth-service/internal/delivery/http"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
 	"net/http"
 )
 
 type Config struct {
-	AuthController *deliver_http.AuthController
+	AuthController *deliverhttp.AuthController
 }
 
 func New(config *Config) http.Handler {
@@ -28,7 +28,9 @@ func New(config *Config) http.Handler {
 		w.Write([]byte("OK"))
 	})
 
-	mux.Get("/login", config.AuthController.SignIn)
+	mux.Post("/login", config.AuthController.SignIn)
+	mux.Post("/register", config.AuthController.SignUp)
+	mux.Post("/verify/{token}", config.AuthController.VerifyUser)
 
 	return mux
 }

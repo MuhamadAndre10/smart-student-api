@@ -1,3 +1,5 @@
 *.env
 /temp
 /db-data
+*.key
+*.pem

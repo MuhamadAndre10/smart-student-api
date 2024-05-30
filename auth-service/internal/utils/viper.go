@@ -1,4 +1,4 @@
-package config
+package utils
 
 import (
 	"fmt"
@@ -16,6 +16,10 @@ type EnvConfigs struct {
 	AppPort string `mapstructure:"APP_PORT"`
 
 	DSN string `mapstructure:"DSN"`
+
+	JWTPrivateKey string `mapstructure:"PRIVATE_KEY"`
+	JWTPublicKey  string `mapstructure:"PUBLIC_KEY"`
+	JwtTokenExp   int    `mapstructure:"TOKEN_EXP"`
 }
 
 func loadEnv(path string) (config *EnvConfigs) {

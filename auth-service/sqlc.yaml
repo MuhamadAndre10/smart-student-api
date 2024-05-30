@@ -2,14 +2,17 @@ version: 2
 sql:
   - engine: postgresql
     queries: "./db/query/*.up.sql"
-    schema: "./db/migrations/*.up.sql"
+    schema: "./db/schema/*.up.sql"
     database:
       uri: "postgresql://postgres:root@localhost:5432/users?sslmode=disable"
     gen:
       go:
-        package: models
-        out: internal/models
+        package: database
+        out: internal/db
         sql_package: "pgx/v5"
+        emit_result_struct_pointers: true
+        emit_params_struct_pointers: true
+
 
 
 
